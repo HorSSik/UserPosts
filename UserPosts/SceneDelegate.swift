@@ -13,7 +13,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // MARK: -
     // MARK: Variables
 
-    var window: UIWindow?
+    internal var window: UIWindow?
+    
+    internal var appCoordinator: AppCoordinator?
     
     // MARK: -
     // MARK: UIWindowSceneDelegate
@@ -23,14 +25,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
-        let contentView = ContentView()
+        let navigationController = UINavigationController()
+        let appCoordinator = AppCoordinator(navigationController: navigationController)
         
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            window.rootViewController = navigationController
             self.window = window
             window.makeKeyAndVisible()
         }
+        
+        self.appCoordinator = appCoordinator
     }
 
     func sceneDidDisconnect(_ scene: UIScene) { }
@@ -43,4 +48,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidEnterBackground(_ scene: UIScene) { }
 }
-
