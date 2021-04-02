@@ -1,0 +1,6 @@
+module Pods_UserPosts {
+  umbrella header "Pods-UserPosts-umbrella.h"
+
+  export *
+  module * { export * }
+}
