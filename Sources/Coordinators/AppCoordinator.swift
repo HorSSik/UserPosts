@@ -21,9 +21,10 @@ class AppCoordinator: BaseCoordinator<AppCoordinatorEvents> {
     // MARK: -
     // MARK: Initialization
     
-    public init(navigationController: UINavigationController) {
+    public init(navigationController: UINavigationController, networking: Networking) {
         super.init(
             navigationController: navigationController,
+            networking: networking,
             callbackEvents: { _ in }
         )
         
@@ -38,6 +39,7 @@ class AppCoordinator: BaseCoordinator<AppCoordinatorEvents> {
         
         let commentsCoordinator = CommentsCoordinator(
             navigationController: self.navigationController,
+            networkingService: self.networking,
             callbackEvents: { event in
                 
             }

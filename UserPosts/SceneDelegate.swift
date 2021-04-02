@@ -25,8 +25,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
+        let networking = Networking()
+        
         let navigationController = UINavigationController()
-        let appCoordinator = AppCoordinator(navigationController: navigationController)
+        let appCoordinator = AppCoordinator(navigationController: navigationController, networking: networking)
         
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)

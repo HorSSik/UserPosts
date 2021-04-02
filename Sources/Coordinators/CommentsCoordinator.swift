@@ -7,6 +7,9 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 enum CommentsCoordinatorEvents {
     
     case close
@@ -17,12 +20,14 @@ class CommentsCoordinator: BaseCoordinator<CommentsCoordinatorEvents> {
     // MARK: -
     // MARK: Initialization
     
-    public override init(
+    public init(
         navigationController: UINavigationController?,
+        networkingService: Networking,
         callbackEvents: @escaping (CommentsCoordinatorEvents) -> ()
     ) {
         super.init(
             navigationController: navigationController,
+            networking: networkingService,
             callbackEvents: callbackEvents
         )
         
@@ -38,5 +43,16 @@ class CommentsCoordinator: BaseCoordinator<CommentsCoordinatorEvents> {
         commentsView.presenter = commentsPresenter
         
         self.navigationController?.setViewControllers([commentsView], animated: true)
+        
+//        self.networking.getAllUsers().subscribe(
+//            onSuccess: { _ in
+//                
+//            },
+//            onFailure: { _ in
+//                
+//            },
+//            onDisposed: {
+//                
+//            })
     }
 }

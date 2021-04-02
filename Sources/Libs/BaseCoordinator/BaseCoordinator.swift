@@ -12,7 +12,7 @@ class BaseCoordinator<Events> {
     // MARK: -
     // MARK: Variables
     
-//    public let networking: Networking
+    public let networking: Networking
     
     public let callbackEvents: (Events) -> ()
     
@@ -27,11 +27,11 @@ class BaseCoordinator<Events> {
     
     public init(
         navigationController: UINavigationController?,
-//         networking: Networking,
+        networking: Networking,
         callbackEvents: @escaping (Events) -> ())
     {
         self.navigationController = navigationController
-//        self.networking = networking
+        self.networking = networking
         self.callbackEvents = callbackEvents
     }
     
