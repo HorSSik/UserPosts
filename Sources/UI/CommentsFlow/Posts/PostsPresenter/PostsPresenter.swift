@@ -14,6 +14,7 @@ protocol PostsViewPresenter: class {
     
     init(view: PostsView, networking: NetworkingProtocol?)
     func viewDidLoad()
+    func selectPost(model: PostModel)
 }
 
 class PostsPresenter: PostsViewPresenter {
@@ -44,6 +45,10 @@ class PostsPresenter: PostsViewPresenter {
         self.getUserPosts()
     }
     
+    func selectPost(model: PostModel) {
+        print(model.title)
+    }
+    
     // MARK: -
     // MARK: Private
     
@@ -57,11 +62,9 @@ class PostsPresenter: PostsViewPresenter {
             .combineLatest(getUsers, getPosts)
             .subscribe(
                 onNext: { [weak self] users, posts in
-                    DispatchQueue.main.async {
-                        let userModel = users.first { $0.id == self?.defaultUserId }
-                        
-                        self?.view?.updatePosts(postsModel: posts, userName: userModel?.name ?? "")
-                    }
+                    let userModel = users.first { $0.id == self?.defaultUserId }
+                    
+                    self?.view?.updatePosts(postsModel: posts, userName: userModel?.name ?? "")
                 },
                 onError: { error in
                     print("Get posts by userId error - \(error.localizedDescription)")
