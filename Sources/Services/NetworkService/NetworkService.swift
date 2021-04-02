@@ -17,11 +17,6 @@ struct MainServerUrl {
     static let devUrl = "https://jsonplaceholder.typicode.com"
 }
 
-//List of the users: https://jsonplaceholder.typicode.com/users
-//List of the posts: https://jsonplaceholder.typicode.com/posts
-//List of the posts by user id: https://jsonplaceholder.typicode.com/posts?userId=1
-//List of the comments: https://jsonplaceholder.typicode.com/comments
-
 class NetworkService {
     
     struct ResponseData {
@@ -37,12 +32,14 @@ class NetworkService {
     private var disposeBag = DisposeBag()
     
     private let requestService: RequestServiceType
+    private let networkParser: NetworkParserType
     
     // MARK: -
     // MARK: Initialization
     
-    public init(requestService: RequestServiceType) {
+    public init(requestService: RequestServiceType, networkParser: NetworkParserType) {
         self.requestService = requestService
+        self.networkParser = networkParser
     }
     
     // MARK: -
@@ -88,15 +85,15 @@ class NetworkService {
         _ responseData: ResponseData,
         _ single: @escaping (SingleEvent<Value>) -> ())
     {
-//        let result: Result<Value, Error> = self.parser.completion(responseData)
-//
-//        DispatchQueue.main.async {
-//            switch result {
-//            case .success(let value):
-//                single(.success(value))
-//            case .failure(let error):
-//                single(.failure(error))
-//            }
-//        }
+        let result: Result<Value, Error> = self.networkParser.completion(responseData)
+
+        DispatchQueue.main.async {
+            switch result {
+            case .success(let value):
+                single(.success(value))
+            case .failure(let error):
+                single(.failure(error))
+            }
+        }
     }
 }

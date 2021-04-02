@@ -41,18 +41,8 @@ class CommentsCoordinator: BaseCoordinator<CommentsCoordinatorEvents> {
         let commentsView = CommentsViewController()
         let commentsPresenter = CommentsPresenter(view: commentsView)
         commentsView.presenter = commentsPresenter
+        commentsView.networking = self.networking
         
         self.navigationController?.setViewControllers([commentsView], animated: true)
-        
-//        self.networking.getAllUsers().subscribe(
-//            onSuccess: { _ in
-//                
-//            },
-//            onFailure: { _ in
-//                
-//            },
-//            onDisposed: {
-//                
-//            })
     }
 }

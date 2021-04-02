@@ -35,8 +35,6 @@ class AppCoordinator: BaseCoordinator<AppCoordinatorEvents> {
     // MARK: Private
     
     private func showCommentsCoordinator() {
-        self.navigationController?.isNavigationBarHidden = true
-        
         let commentsCoordinator = CommentsCoordinator(
             navigationController: self.navigationController,
             networkingService: self.networking,

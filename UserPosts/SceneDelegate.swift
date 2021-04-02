@@ -25,10 +25,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
-        let networking = Networking()
-        
         let navigationController = UINavigationController()
-        let appCoordinator = AppCoordinator(navigationController: navigationController, networking: networking)
+        let appCoordinator = AppCoordinator(navigationController: navigationController, networking: self.networking())
         
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
@@ -49,4 +47,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) { }
 
     func sceneDidEnterBackground(_ scene: UIScene) { }
+    
+    // MARK: -
+    // MARK: Private
+    
+    private func networking() -> Networking {
+        let networkParser = NetworkParser()
+        let requestService = RequestService()
+        let networkService = NetworkService(requestService: requestService, networkParser: networkParser)
+        
+        return Networking(networkService: networkService)
+    }
 }

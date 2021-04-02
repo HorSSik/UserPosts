@@ -10,20 +10,19 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol NetworkingProtocol {
-    
-    func cancel(at urlString: String)
-    func cancelAll()
-    
-    func getAllUsers() -> Single<MockText>
-}
-
 class Networking: NetworkingProtocol {
     
     // MARK: -
     // MARK: Variables
     
-    let networkService: NetworkService = NetworkService(requestService: RequestService())
+    public let networkService: NetworkService
+    
+    // MARK: -
+    // MARK: Initialization
+    
+    public init(networkService: NetworkService) {
+        self.networkService = networkService
+    }
     
     // MARK: -
     // MARK: Public
@@ -39,14 +38,27 @@ class Networking: NetworkingProtocol {
 
 extension Networking {
     
-    func getAllUsers() -> Single<MockText> {
+    func getAllUsers() -> Single<[UserModel]> {
         let url = MainServerUrl.devUrl + "/users"
         
         return self.networkService.response(urlString: url, method: .get)
     }
-}
-
-struct MockText: Decodable {
     
-    let a: Int
+    func getAllPosts() -> Single<[PostModel]> {
+        let url = MainServerUrl.devUrl + "/posts"
+        
+        return self.networkService.response(urlString: url, method: .get)
+    }
+    
+    func getAllComments() -> Single<[CommentModel]> {
+        let url = MainServerUrl.devUrl + "/comments"
+        
+        return self.networkService.response(urlString: url, method: .get)
+    }
+    
+    func getPostsBy(userId: Int) -> Single<[PostModel]> {
+        let url = MainServerUrl.devUrl + "/posts?userId=\(userId)"
+        
+        return self.networkService.response(urlString: url, method: .get)
+    }
 }

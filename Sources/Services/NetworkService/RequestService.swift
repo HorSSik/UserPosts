@@ -9,14 +9,6 @@ import Foundation
 
 import Alamofire
 
-protocol RequestServiceType {
-    
-    func requestData(url: URL, httpMethod: HTTPMethod, completion: @escaping (Data?, URLResponse?, Error?) -> ())
-    
-    func cancel(at urlString: String)
-    func cancelAll()
-}
-
 class RequestService: RequestServiceType {
     
     // MARK: -
