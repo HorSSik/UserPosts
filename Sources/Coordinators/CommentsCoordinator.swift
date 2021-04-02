@@ -31,17 +31,16 @@ class CommentsCoordinator: BaseCoordinator<CommentsCoordinatorEvents> {
             callbackEvents: callbackEvents
         )
         
-        self.showCommentsViewController()
+        self.showPostsViewController()
     }
     
     // MARK: -
     // MARK: Private
     
-    private func showCommentsViewController() {
-        let commentsView = CommentsViewController()
-        let commentsPresenter = CommentsPresenter(view: commentsView)
+    private func showPostsViewController() {
+        let commentsView = PostsViewController()
+        let commentsPresenter = PostsPresenter(view: commentsView, networking: self.networking)
         commentsView.presenter = commentsPresenter
-        commentsView.networking = self.networking
         
         self.navigationController?.setViewControllers([commentsView], animated: true)
     }

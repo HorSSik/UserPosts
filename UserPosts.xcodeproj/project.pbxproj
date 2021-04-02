@@ -12,9 +12,9 @@
 		3F81332C2616E0BD00E8BDF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F81332B2616E0BD00E8BDF6 /* Assets.xcassets */; };
 		3F81332F2616E0BD00E8BDF6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F81332E2616E0BD00E8BDF6 /* Preview Assets.xcassets */; };
 		3F8133322616E0BD00E8BDF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F8133302616E0BD00E8BDF6 /* LaunchScreen.storyboard */; };
-		3F81335B2616E90F00E8BDF6 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8133592616E90F00E8BDF6 /* CommentsViewController.swift */; };
-		3F81335C2616E90F00E8BDF6 /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F81335A2616E90F00E8BDF6 /* CommentsViewController.xib */; };
-		3F8133612616E98000E8BDF6 /* CommentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8133602616E98000E8BDF6 /* CommentsPresenter.swift */; };
+		3F81335B2616E90F00E8BDF6 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8133592616E90F00E8BDF6 /* PostsViewController.swift */; };
+		3F81335C2616E90F00E8BDF6 /* PostsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F81335A2616E90F00E8BDF6 /* PostsViewController.xib */; };
+		3F8133612616E98000E8BDF6 /* PostsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8133602616E98000E8BDF6 /* PostsPresenter.swift */; };
 		3F81336B2616F36E00E8BDF6 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81336A2616F36E00E8BDF6 /* BaseCoordinator.swift */; };
 		3F8133702616F90A00E8BDF6 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81336F2616F90A00E8BDF6 /* AppCoordinator.swift */; };
 		3F8133742616FA8200E8BDF6 /* CommentsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8133732616FA8200E8BDF6 /* CommentsCoordinator.swift */; };
@@ -41,9 +41,9 @@
 		3F81332E2616E0BD00E8BDF6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3F8133312616E0BD00E8BDF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F8133332616E0BD00E8BDF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F8133592616E90F00E8BDF6 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
-		3F81335A2616E90F00E8BDF6 /* CommentsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
-		3F8133602616E98000E8BDF6 /* CommentsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsPresenter.swift; sourceTree = "<group>"; };
+		3F8133592616E90F00E8BDF6 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
+		3F81335A2616E90F00E8BDF6 /* PostsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostsViewController.xib; sourceTree = "<group>"; };
+		3F8133602616E98000E8BDF6 /* PostsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsPresenter.swift; sourceTree = "<group>"; };
 		3F81336A2616F36E00E8BDF6 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		3F81336F2616F90A00E8BDF6 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3F8133732616FA8200E8BDF6 /* CommentsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCoordinator.swift; sourceTree = "<group>"; };
@@ -152,30 +152,30 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		3F8133572616E87900E8BDF6 /* CommentsView */ = {
+		3F8133572616E87900E8BDF6 /* PostsView */ = {
 			isa = PBXGroup;
 			children = (
-				3F8133592616E90F00E8BDF6 /* CommentsViewController.swift */,
-				3F81335A2616E90F00E8BDF6 /* CommentsViewController.xib */,
+				3F8133592616E90F00E8BDF6 /* PostsViewController.swift */,
+				3F81335A2616E90F00E8BDF6 /* PostsViewController.xib */,
 			);
-			path = CommentsView;
+			path = PostsView;
 			sourceTree = "<group>";
 		};
-		3F8133582616E8ED00E8BDF6 /* Comments */ = {
+		3F8133582616E8ED00E8BDF6 /* Posts */ = {
 			isa = PBXGroup;
 			children = (
-				3F81335F2616E96C00E8BDF6 /* CommentsPresenter */,
-				3F8133572616E87900E8BDF6 /* CommentsView */,
+				3F81335F2616E96C00E8BDF6 /* PostsPresenter */,
+				3F8133572616E87900E8BDF6 /* PostsView */,
 			);
-			path = Comments;
+			path = Posts;
 			sourceTree = "<group>";
 		};
-		3F81335F2616E96C00E8BDF6 /* CommentsPresenter */ = {
+		3F81335F2616E96C00E8BDF6 /* PostsPresenter */ = {
 			isa = PBXGroup;
 			children = (
-				3F8133602616E98000E8BDF6 /* CommentsPresenter.swift */,
+				3F8133602616E98000E8BDF6 /* PostsPresenter.swift */,
 			);
-			path = CommentsPresenter;
+			path = PostsPresenter;
 			sourceTree = "<group>";
 		};
 		3F8133682616F33D00E8BDF6 /* Libs */ = {
@@ -264,7 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				3F9250D1261753BA005011C8 /* Private */,
-				3F8133582616E8ED00E8BDF6 /* Comments */,
+				3F8133582616E8ED00E8BDF6 /* Posts */,
 			);
 			path = CommentsFlow;
 			sourceTree = "<group>";
@@ -352,7 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F81335C2616E90F00E8BDF6 /* CommentsViewController.xib in Resources */,
+				3F81335C2616E90F00E8BDF6 /* PostsViewController.xib in Resources */,
 				3F8133322616E0BD00E8BDF6 /* LaunchScreen.storyboard in Resources */,
 				3F81332F2616E0BD00E8BDF6 /* Preview Assets.xcassets in Resources */,
 				3F81332C2616E0BD00E8BDF6 /* Assets.xcassets in Resources */,
@@ -397,7 +397,7 @@
 				3F9250AB261717A8005011C8 /* Networking.swift in Sources */,
 				3F9250B626173059005011C8 /* UsersModel.swift in Sources */,
 				3F9250CE261746E5005011C8 /* UINavigationController+Extensions.swift in Sources */,
-				3F81335B2616E90F00E8BDF6 /* CommentsViewController.swift in Sources */,
+				3F81335B2616E90F00E8BDF6 /* PostsViewController.swift in Sources */,
 				3F9250C42617413E005011C8 /* CommentsModel.swift in Sources */,
 				3F9250D5261753DE005011C8 /* CommentsTableViewCell.swift in Sources */,
 				3F9250A326170BF0005011C8 /* RequestService.swift in Sources */,
@@ -405,7 +405,7 @@
 				3F81336B2616F36E00E8BDF6 /* BaseCoordinator.swift in Sources */,
 				3F8133262616E0BB00E8BDF6 /* AppDelegate.swift in Sources */,
 				3F8133282616E0BB00E8BDF6 /* SceneDelegate.swift in Sources */,
-				3F8133612616E98000E8BDF6 /* CommentsPresenter.swift in Sources */,
+				3F8133612616E98000E8BDF6 /* PostsPresenter.swift in Sources */,
 				3F8133742616FA8200E8BDF6 /* CommentsCoordinator.swift in Sources */,
 				3F9250BD26173CF8005011C8 /* AppErrors.swift in Sources */,
 				3F8133702616F90A00E8BDF6 /* AppCoordinator.swift in Sources */,
