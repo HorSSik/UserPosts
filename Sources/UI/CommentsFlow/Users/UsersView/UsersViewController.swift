@@ -12,7 +12,7 @@ protocol UsersView: class {
     func updateUsers(users: [UserModel], currentUserName: String)
 }
 
-class UsersViewController: UIViewController {
+class UsersViewController: BaseViewController {
     
     // MARK: -
     // MARK: Outleties
@@ -35,6 +35,8 @@ class UsersViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setHandlers(with: self.presenter)
         
         self.presenter?.viewDidLoad()
         self.configureTable()

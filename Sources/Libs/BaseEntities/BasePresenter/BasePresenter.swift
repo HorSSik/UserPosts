@@ -10,16 +10,26 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class BasePresenter<Events>: NSObject {
+protocol UnlockHandable: class {
+
+    var lockHandler: (() -> ())? { get set }
+    var unlockHandler: (() -> ())? { get set }
+}
+
+class BasePresenter<Events>: NSObject, UnlockHandable {
     
     // MARK: -
     // MARK: Variables
-
+    
+    internal var lockHandler: (() -> ())?
+    internal var unlockHandler: (() -> ())?
+    
     internal let callbackEvents: (Events) -> ()
     
     internal let networking: NetworkingProtocol?
     
     internal var disposeBag = DisposeBag()
+    
     
     // MARK: -
     // MARK: Initialization

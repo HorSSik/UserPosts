@@ -7,7 +7,10 @@
 
 import Foundation
 
-protocol UsersViewPresenter {
+import RxSwift
+import RxCocoa
+
+protocol UsersViewPresenter: UnlockHandable {
     
     init(
         view: UsersView,
@@ -75,14 +78,20 @@ class UsersPresenter: BasePresenter<UsersPresenterEvents>, UsersViewPresenter {
     
     private func getUsers() {
         guard let networking = self.networking else { return }
+        self.lockHandler?()
 
         networking
             .getAllUsers()
+            .observe(on: MainScheduler.asyncInstance)
             .subscribe(
                 onSuccess: { [weak self] users in
+                    self?.unlockHandler?()
+                    
                     self?.view?.updateUsers(users: users, currentUserName: self?.userUpdateModel.userModel.name ?? "")
                 },
-                onFailure: { error in
+                onFailure: { [weak self] error in // In a real application, you will need to implement error handling logic
+                    self?.unlockHandler?()
+                    
                     print("Get users error - \(error.localizedDescription)")
                 },
                 onDisposed: { }

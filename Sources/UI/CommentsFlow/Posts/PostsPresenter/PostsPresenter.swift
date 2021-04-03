@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol PostsViewPresenter {
+protocol PostsViewPresenter: UnlockHandable {
     
     init(view: PostsView, networking: NetworkingProtocol?, callbackEvents: @escaping (PostsPresenterEvents) -> ())
     
@@ -83,20 +83,26 @@ class PostsPresenter: BasePresenter<PostsPresenterEvents>, PostsViewPresenter {
     
     private func getUserPosts() {
         guard let networking = self.networking else { return }
+        self.lockHandler?()
 
         let getUsers = networking.getAllUsers().asObservable()
         let getPosts = networking.getPostsBy(userId: self.defaultUserId).asObservable()
 
         Observable
             .combineLatest(getUsers, getPosts)
+            .observe(on: MainScheduler.asyncInstance)
             .subscribe(
                 onNext: { [weak self] users, posts in
+                    self?.unlockHandler?()
+                    
                     let userModel = users.first { $0.id == self?.defaultUserId }
                     
                     self?.userModel = userModel
                     self?.view?.updatePosts(postsModel: posts, userName: userModel?.name ?? "")
                 },
-                onError: { error in
+                onError: { [weak self] error in // In a real application, you will need to implement error handling logic
+                    self?.unlockHandler?()
+                    
                     print("Get posts by userId error - \(error.localizedDescription)")
                 },
                 onCompleted: { },

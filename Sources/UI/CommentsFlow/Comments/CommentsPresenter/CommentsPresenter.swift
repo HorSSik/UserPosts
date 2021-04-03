@@ -7,7 +7,10 @@
 
 import Foundation
 
-protocol CommentsViewPresenter {
+import RxSwift
+import RxCocoa
+
+protocol CommentsViewPresenter: UnlockHandable {
     
     init(view: CommentsView, postModel: PostModel, networking: NetworkingProtocol?, callbackEvents: @escaping (CommentsPresenterEvents) -> ())
     
@@ -55,16 +58,22 @@ class CommentsPresenter: BasePresenter<CommentsPresenterEvents>, CommentsViewPre
     
     private func getComments() {
         guard let networking = self.networking else { return }
+        self.lockHandler?()
 
         networking
             .getAllComments()
+            .observe(on: MainScheduler.asyncInstance)
             .subscribe(
                 onSuccess: { [weak self] comments in
+                    self?.unlockHandler?()
+                    
                     let filteredComments = comments.filter { $0.postId == self?.postModel.id }
                     
                     self?.view?.updatePosts(commentsModel: filteredComments)
                 },
-                onFailure: { error in
+                onFailure: { [weak self] error in // In a real application, you will need to implement error handling logic
+                    self?.unlockHandler?()
+                    
                     print("Get comments error - \(error.localizedDescription)")
                 },
                 onDisposed: { }

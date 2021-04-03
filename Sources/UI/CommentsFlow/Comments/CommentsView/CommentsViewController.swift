@@ -12,7 +12,7 @@ protocol CommentsView: class {
     func updatePosts(commentsModel: [CommentModel])
 }
 
-class CommentsViewController: UIViewController {
+class CommentsViewController: BaseViewController {
     
     // MARK: -
     // MARK: Outleties
@@ -35,6 +35,8 @@ class CommentsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setHandlers(with: self.presenter)
         
         self.presenter?.viewDidLoad()
         self.configureTable()

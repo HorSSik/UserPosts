@@ -10,6 +10,8 @@
 		3F576E18261852C5004F93C6 /* UsersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F576E17261852C5004F93C6 /* UsersPresenter.swift */; };
 		3F576E1D26185313004F93C6 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F576E1B26185313004F93C6 /* UsersViewController.swift */; };
 		3F576E1E26185313004F93C6 /* UsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F576E1C26185313004F93C6 /* UsersViewController.xib */; };
+		3F576E2426185E97004F93C6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F576E2326185E97004F93C6 /* BaseViewController.swift */; };
+		3F576E2826185F0F004F93C6 /* LockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F576E2726185F0F004F93C6 /* LockView.swift */; };
 		3F7C98D9261841B500883C45 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7C98D7261841B500883C45 /* CommentsViewController.swift */; };
 		3F7C98DA261841B500883C45 /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F7C98D8261841B500883C45 /* CommentsViewController.xib */; };
 		3F7C98DD261841FF00883C45 /* CommentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7C98DC261841FF00883C45 /* CommentsPresenter.swift */; };
@@ -44,6 +46,8 @@
 		3F576E17261852C5004F93C6 /* UsersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPresenter.swift; sourceTree = "<group>"; };
 		3F576E1B26185313004F93C6 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		3F576E1C26185313004F93C6 /* UsersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersViewController.xib; sourceTree = "<group>"; };
+		3F576E2326185E97004F93C6 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		3F576E2726185F0F004F93C6 /* LockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockView.swift; sourceTree = "<group>"; };
 		3F7C98D7261841B500883C45 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		3F7C98D8261841B500883C45 /* CommentsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
 		3F7C98DC261841FF00883C45 /* CommentsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsPresenter.swift; sourceTree = "<group>"; };
@@ -125,6 +129,23 @@
 			path = UsersView;
 			sourceTree = "<group>";
 		};
+		3F576E2226185E76004F93C6 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3F576E2626185F05004F93C6 /* Private */,
+				3F576E2326185E97004F93C6 /* BaseViewController.swift */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		3F576E2626185F05004F93C6 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				3F576E2726185F0F004F93C6 /* LockView.swift */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
 		3F7C98D42618417700883C45 /* Comments */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +183,7 @@
 		3F7C98E42618468600883C45 /* BaseEntities */ = {
 			isa = PBXGroup;
 			children = (
+				3F576E2226185E76004F93C6 /* BaseViewController */,
 				3F8133692616F34400E8BDF6 /* BaseCoordinator */,
 				3F7C98DF261843A100883C45 /* BasePresenter */,
 			);
@@ -484,8 +506,10 @@
 				3F9250C126174078005011C8 /* PostModel.swift in Sources */,
 				3F9250AB261717A8005011C8 /* Networking.swift in Sources */,
 				3F9250B626173059005011C8 /* UsersModel.swift in Sources */,
+				3F576E2426185E97004F93C6 /* BaseViewController.swift in Sources */,
 				3F7C98DD261841FF00883C45 /* CommentsPresenter.swift in Sources */,
 				3F9250CE261746E5005011C8 /* UINavigationController+Extensions.swift in Sources */,
+				3F576E2826185F0F004F93C6 /* LockView.swift in Sources */,
 				3F81335B2616E90F00E8BDF6 /* PostsViewController.swift in Sources */,
 				3F9250C42617413E005011C8 /* CommentsModel.swift in Sources */,
 				3F7C98D9261841B500883C45 /* CommentsViewController.swift in Sources */,

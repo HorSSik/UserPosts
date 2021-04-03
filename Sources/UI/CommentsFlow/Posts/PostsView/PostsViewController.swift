@@ -12,7 +12,7 @@ protocol PostsView: class {
     func updatePosts(postsModel: [PostModel], userName: String)
 }
 
-class PostsViewController: UIViewController {
+class PostsViewController: BaseViewController {
     
     // MARK: -
     // MARK: Outleties
@@ -35,6 +35,8 @@ class PostsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setHandlers(with: self.presenter)
         
         self.configureTable()
         self.configureNavigationBar()
