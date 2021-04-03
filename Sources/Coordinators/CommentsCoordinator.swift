@@ -55,6 +55,8 @@ class CommentsCoordinator: BaseCoordinator<CommentsCoordinatorEvents> {
         switch event {
         case .showComments(let postModel):
             self.showCommentsViewController(postModel: postModel)
+        case .showUsers(let userUpdateModel):
+            self.showUsersViewController(userUpdateModel: userUpdateModel)
         }
     }
     
@@ -69,5 +71,27 @@ class CommentsCoordinator: BaseCoordinator<CommentsCoordinatorEvents> {
         commentsView.presenter = commentsPresenter
         
         self.push(commentsView, animated: true)
+    }
+    
+    private func showUsersViewController(userUpdateModel: UserUpdateModel) {
+        let usersView = UsersViewController()
+        let usersPresenter = UsersPresenter(
+            view: usersView,
+            userUpdateModel: userUpdateModel,
+            networking: self.networking,
+            callbackEvents: { [weak self] event in
+                self?.handle(event: event)
+            }
+        )
+        usersView.presenter = usersPresenter
+        
+        self.push(usersView, animated: true)
+    }
+    
+    private func handle(event: UsersPresenterEvents) {
+        switch event {
+        case .close:
+            self.pop(animated: true)
+        }
     }
 }

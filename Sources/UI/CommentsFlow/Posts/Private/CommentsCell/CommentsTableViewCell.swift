@@ -10,7 +10,7 @@ import UIKit
 struct CommentsCellModel {
     
     let title: String
-    let description: String
+    let description: String?
 }
 
 class CommentsTableViewCell: UITableViewCell {
@@ -43,5 +43,7 @@ class CommentsTableViewCell: UITableViewCell {
     public func fill(with model: CommentsCellModel) {
         self.titleLabel?.text = model.title
         self.descriptionLabel?.text = model.description
+        
+        self.descriptionLabel?.isHidden = model.description == nil || model.description == ""
     }
 }

@@ -36,8 +36,8 @@ class PostsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setTableDependency()
-        self.changeNavigationBarStyle()
+        self.configureTable()
+        self.configureNavigationBar()
         
         self.presenter?.viewDidLoad()
     }
@@ -45,7 +45,7 @@ class PostsViewController: UIViewController {
     // MARK: -
     // MARK: Private
     
-    private func setTableDependency() {
+    private func configureTable() {
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
         self.tableView?.register(
@@ -54,14 +54,21 @@ class PostsViewController: UIViewController {
         )
     }
     
-    private func changeNavigationBarStyle() {
+    private func configureNavigationBar() {
         let navigationBar = self.navigationController?.navigationBar
+        let usersButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(self.showUsers))
+        usersButton.image = UIImage(named: "users_icon")
         
         navigationBar?.barTintColor = .black
         navigationBar?.topItem?.backButtonTitle = ""
         navigationBar?.tintColor = .white
         
+        self.navigationItem.rightBarButtonItem = usersButton
         self.navigationController?.setAllTitleColor(.white)
+    }
+    
+    @objc func showUsers(sender: UIBarButtonItem) {
+        self.presenter?.changeUser()
     }
 }
 

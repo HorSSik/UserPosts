@@ -65,7 +65,7 @@ class CommentsPresenter: BasePresenter<CommentsPresenterEvents>, CommentsViewPre
                     self?.view?.updatePosts(commentsModel: filteredComments)
                 },
                 onFailure: { error in
-                    print("Get posts by userId error - \(error.localizedDescription)")
+                    print("Get comments error - \(error.localizedDescription)")
                 },
                 onDisposed: { }
             )

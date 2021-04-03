@@ -1,5 +1,5 @@
 //
-//  CommentsViewController.swift
+//  UsersViewController.swift
 //  UserPosts
 //
 //  Created by Dima Omelchenko on 03.04.2021.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol CommentsView: class {
+protocol UsersView: class {
     
-    func updatePosts(commentsModel: [CommentModel])
+    func updateUsers(users: [UserModel], currentUserName: String)
 }
 
-class CommentsViewController: UIViewController {
+class UsersViewController: UIViewController {
     
     // MARK: -
     // MARK: Outleties
@@ -22,9 +22,9 @@ class CommentsViewController: UIViewController {
     // MARK: -
     // MARK: Variables
     
-    public var presenter: CommentsViewPresenter?
+    public var presenter: UsersViewPresenter?
     
-    public var commentsModel = [CommentModel]() {
+    public var usersModel = [UserModel]() {
         didSet {
             self.tableView?.reloadData()
         }
@@ -56,19 +56,19 @@ class CommentsViewController: UIViewController {
 // MARK: -
 // MARK: UITableViewDataSource
 
-extension CommentsViewController: UITableViewDataSource {
+extension UsersViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.commentsModel.count
+        return self.usersModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommentsTableViewCell.cellName, for: indexPath)
         
         let value = cell as? CommentsTableViewCell
-        let commentModel = self.commentsModel[indexPath.row]
+        let userModel = self.usersModel[indexPath.row]
         
-        value?.fill(with: CommentsCellModel(title: commentModel.email, description: commentModel.body))
+        value?.fill(with: CommentsCellModel(title: "\(userModel.name) (\(userModel.username))", description: ""))
         
         return value ?? UITableViewCell()
     }
@@ -77,18 +77,23 @@ extension CommentsViewController: UITableViewDataSource {
 // MARK: -
 // MARK: Description
 
-extension CommentsViewController: UITableViewDelegate {
+extension UsersViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let userModel = self.usersModel[indexPath.row]
+        
+        self.presenter?.selectUser(model: userModel)
+    }
 }
 
 // MARK: -
 // MARK: View Protocol
 
-extension CommentsViewController: CommentsView {
+extension UsersViewController: UsersView {
     
-    func updatePosts(commentsModel: [CommentModel]) {
-        self.commentsModel = commentsModel
+    func updateUsers(users: [UserModel], currentUserName: String) {
+        self.usersModel = users
         
-        self.title = "Comments (\(commentsModel.count))"
+        self.title = currentUserName
     }
 }

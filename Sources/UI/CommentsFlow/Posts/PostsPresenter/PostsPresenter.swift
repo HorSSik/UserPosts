@@ -15,12 +15,15 @@ protocol PostsViewPresenter {
     init(view: PostsView, networking: NetworkingProtocol?, callbackEvents: @escaping (PostsPresenterEvents) -> ())
     
     func viewDidLoad()
+    
     func selectPost(model: PostModel)
+    func changeUser()
 }
 
 enum PostsPresenterEvents {
     
     case showComments(postModel: PostModel)
+    case showUsers(userUpdateModel: UserUpdateModel)
 }
 
 class PostsPresenter: BasePresenter<PostsPresenterEvents>, PostsViewPresenter {
@@ -30,7 +33,13 @@ class PostsPresenter: BasePresenter<PostsPresenterEvents>, PostsViewPresenter {
     
     weak var view: PostsView?
     
-    private var defaultUserId = 1
+    private var defaultUserId = 1 {
+        didSet {
+            self.getUserPosts()
+        }
+    }
+    
+    private var userModel: UserModel?
     
     // MARK: -
     // MARK: Initialization
@@ -56,6 +65,19 @@ class PostsPresenter: BasePresenter<PostsPresenterEvents>, PostsViewPresenter {
         self.callbackEvents(.showComments(postModel: model))
     }
     
+    func changeUser() {
+        guard let userModel = self.userModel else { return }
+        
+        let userUpdateModel = UserUpdateModel(
+            userModel: userModel,
+            completion: { [weak self] userModel in
+                self?.defaultUserId = userModel.id
+            }
+        )
+        
+        self.callbackEvents(.showUsers(userUpdateModel: userUpdateModel))
+    }
+    
     // MARK: -
     // MARK: Private
     
@@ -71,6 +93,7 @@ class PostsPresenter: BasePresenter<PostsPresenterEvents>, PostsViewPresenter {
                 onNext: { [weak self] users, posts in
                     let userModel = users.first { $0.id == self?.defaultUserId }
                     
+                    self?.userModel = userModel
                     self?.view?.updatePosts(postsModel: posts, userName: userModel?.name ?? "")
                 },
                 onError: { error in

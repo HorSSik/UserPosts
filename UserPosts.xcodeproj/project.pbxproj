@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F576E18261852C5004F93C6 /* UsersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F576E17261852C5004F93C6 /* UsersPresenter.swift */; };
+		3F576E1D26185313004F93C6 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F576E1B26185313004F93C6 /* UsersViewController.swift */; };
+		3F576E1E26185313004F93C6 /* UsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F576E1C26185313004F93C6 /* UsersViewController.xib */; };
 		3F7C98D9261841B500883C45 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7C98D7261841B500883C45 /* CommentsViewController.swift */; };
 		3F7C98DA261841B500883C45 /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F7C98D8261841B500883C45 /* CommentsViewController.xib */; };
 		3F7C98DD261841FF00883C45 /* CommentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7C98DC261841FF00883C45 /* CommentsPresenter.swift */; };
@@ -38,6 +41,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F576E17261852C5004F93C6 /* UsersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPresenter.swift; sourceTree = "<group>"; };
+		3F576E1B26185313004F93C6 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		3F576E1C26185313004F93C6 /* UsersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersViewController.xib; sourceTree = "<group>"; };
 		3F7C98D7261841B500883C45 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		3F7C98D8261841B500883C45 /* CommentsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
 		3F7C98DC261841FF00883C45 /* CommentsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsPresenter.swift; sourceTree = "<group>"; };
@@ -91,6 +97,32 @@
 				E9FD7DDFD62ED436A234CB84 /* Pods-UserPosts.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		3F576E1526185290004F93C6 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				3F576E16261852AE004F93C6 /* UsersPresenter */,
+				3F576E1A261852FE004F93C6 /* UsersView */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		3F576E16261852AE004F93C6 /* UsersPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				3F576E17261852C5004F93C6 /* UsersPresenter.swift */,
+			);
+			path = UsersPresenter;
+			sourceTree = "<group>";
+		};
+		3F576E1A261852FE004F93C6 /* UsersView */ = {
+			isa = PBXGroup;
+			children = (
+				3F576E1B26185313004F93C6 /* UsersViewController.swift */,
+				3F576E1C26185313004F93C6 /* UsersViewController.xib */,
+			);
+			path = UsersView;
 			sourceTree = "<group>";
 		};
 		3F7C98D42618417700883C45 /* Comments */ = {
@@ -317,6 +349,7 @@
 			children = (
 				3F8133582616E8ED00E8BDF6 /* Posts */,
 				3F7C98D42618417700883C45 /* Comments */,
+				3F576E1526185290004F93C6 /* Users */,
 			);
 			path = CommentsFlow;
 			sourceTree = "<group>";
@@ -404,6 +437,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F576E1E26185313004F93C6 /* UsersViewController.xib in Resources */,
 				3F81335C2616E90F00E8BDF6 /* PostsViewController.xib in Resources */,
 				3F8133322616E0BD00E8BDF6 /* LaunchScreen.storyboard in Resources */,
 				3F7C98DA261841B500883C45 /* CommentsViewController.xib in Resources */,
@@ -458,7 +492,9 @@
 				3F9250D5261753DE005011C8 /* CommentsTableViewCell.swift in Sources */,
 				3F9250A326170BF0005011C8 /* RequestService.swift in Sources */,
 				3F9250B92617364E005011C8 /* NetworkParser.swift in Sources */,
+				3F576E18261852C5004F93C6 /* UsersPresenter.swift in Sources */,
 				3F81336B2616F36E00E8BDF6 /* BaseCoordinator.swift in Sources */,
+				3F576E1D26185313004F93C6 /* UsersViewController.swift in Sources */,
 				3F8133262616E0BB00E8BDF6 /* AppDelegate.swift in Sources */,
 				3F8133282616E0BB00E8BDF6 /* SceneDelegate.swift in Sources */,
 				3F8133612616E98000E8BDF6 /* PostsPresenter.swift in Sources */,
