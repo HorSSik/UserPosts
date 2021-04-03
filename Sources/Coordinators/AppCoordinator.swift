@@ -38,8 +38,8 @@ class AppCoordinator: BaseCoordinator<AppCoordinatorEvents> {
         let commentsCoordinator = CommentsCoordinator(
             navigationController: self.navigationController,
             networkingService: self.networking,
-            callbackEvents: { event in
-                
+            callbackEvents: { [weak self] event in
+                self?.handle(event: event)
             }
         )
         

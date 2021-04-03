@@ -48,11 +48,18 @@ class PostsViewController: UIViewController {
     private func setTableDependency() {
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
-        self.tableView?.register(UINib(nibName: "CommentsTableViewCell", bundle: nil), forCellReuseIdentifier: CommentsTableViewCell.cellName)
+        self.tableView?.register(
+            UINib(nibName: "CommentsTableViewCell", bundle: nil),
+            forCellReuseIdentifier: CommentsTableViewCell.cellName
+        )
     }
     
     private func changeNavigationBarStyle() {
-        self.navigationController?.navigationBar.barTintColor = .black
+        let navigationBar = self.navigationController?.navigationBar
+        
+        navigationBar?.barTintColor = .black
+        navigationBar?.topItem?.backButtonTitle = ""
+        navigationBar?.tintColor = .white
         
         self.navigationController?.setAllTitleColor(.white)
     }

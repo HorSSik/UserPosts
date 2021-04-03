@@ -38,10 +38,36 @@ class CommentsCoordinator: BaseCoordinator<CommentsCoordinatorEvents> {
     // MARK: Private
     
     private func showPostsViewController() {
-        let commentsView = PostsViewController()
-        let commentsPresenter = PostsPresenter(view: commentsView, networking: self.networking)
+        let postsView = PostsViewController()
+        let postsPresenter = PostsPresenter(
+            view: postsView,
+            networking: self.networking,
+            callbackEvents: { [weak self] event in
+                self?.handle(event: event)
+            }
+        )
+        postsView.presenter = postsPresenter
+        
+        self.navigationController?.setViewControllers([postsView], animated: true)
+    }
+    
+    private func handle(event: PostsPresenterEvents) {
+        switch event {
+        case .showComments(let postModel):
+            self.showCommentsViewController(postModel: postModel)
+        }
+    }
+    
+    private func showCommentsViewController(postModel: PostModel) {
+        let commentsView = CommentsViewController()
+        let commentsPresenter = CommentsPresenter(
+            view: commentsView,
+            postModel: postModel,
+            networking: self.networking,
+            callbackEvents: { _ in }
+        )
         commentsView.presenter = commentsPresenter
         
-        self.navigationController?.setViewControllers([commentsView], animated: true)
+        self.push(commentsView, animated: true)
     }
 }

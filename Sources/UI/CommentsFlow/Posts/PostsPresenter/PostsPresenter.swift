@@ -10,14 +10,20 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol PostsViewPresenter: class {
+protocol PostsViewPresenter {
     
-    init(view: PostsView, networking: NetworkingProtocol?)
+    init(view: PostsView, networking: NetworkingProtocol?, callbackEvents: @escaping (PostsPresenterEvents) -> ())
+    
     func viewDidLoad()
     func selectPost(model: PostModel)
 }
 
-class PostsPresenter: PostsViewPresenter {
+enum PostsPresenterEvents {
+    
+    case showComments(postModel: PostModel)
+}
+
+class PostsPresenter: BasePresenter<PostsPresenterEvents>, PostsViewPresenter {
     
     // MARK: -
     // MARK: Variables
@@ -26,16 +32,17 @@ class PostsPresenter: PostsViewPresenter {
     
     private var defaultUserId = 1
     
-    private var disposeBag = DisposeBag()
-    
-    private var networking: NetworkingProtocol?
-    
     // MARK: -
     // MARK: Initialization
     
-    required init(view: PostsView, networking: NetworkingProtocol?) {
+    required init(
+        view: PostsView,
+        networking: NetworkingProtocol?,
+        callbackEvents: @escaping (PostsPresenterEvents) -> ()
+    ) {
         self.view = view
-        self.networking = networking
+        
+        super.init(networking: networking, callbackEvents: callbackEvents)
     }
     
     // MARK: -
@@ -46,7 +53,7 @@ class PostsPresenter: PostsViewPresenter {
     }
     
     func selectPost(model: PostModel) {
-        print(model.title)
+        self.callbackEvents(.showComments(postModel: model))
     }
     
     // MARK: -

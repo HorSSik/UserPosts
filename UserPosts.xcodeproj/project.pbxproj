@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F7C98D9261841B500883C45 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7C98D7261841B500883C45 /* CommentsViewController.swift */; };
+		3F7C98DA261841B500883C45 /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F7C98D8261841B500883C45 /* CommentsViewController.xib */; };
+		3F7C98DD261841FF00883C45 /* CommentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7C98DC261841FF00883C45 /* CommentsPresenter.swift */; };
+		3F7C98E1261843BB00883C45 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7C98E0261843BB00883C45 /* BasePresenter.swift */; };
 		3F8133262616E0BB00E8BDF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8133252616E0BB00E8BDF6 /* AppDelegate.swift */; };
 		3F8133282616E0BB00E8BDF6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8133272616E0BB00E8BDF6 /* SceneDelegate.swift */; };
 		3F81332C2616E0BD00E8BDF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F81332B2616E0BD00E8BDF6 /* Assets.xcassets */; };
@@ -34,6 +38,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F7C98D7261841B500883C45 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		3F7C98D8261841B500883C45 /* CommentsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
+		3F7C98DC261841FF00883C45 /* CommentsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsPresenter.swift; sourceTree = "<group>"; };
+		3F7C98E0261843BB00883C45 /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		3F8133222616E0BB00E8BDF6 /* UserPosts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserPosts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F8133252616E0BB00E8BDF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F8133272616E0BB00E8BDF6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +91,49 @@
 				E9FD7DDFD62ED436A234CB84 /* Pods-UserPosts.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		3F7C98D42618417700883C45 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				3F7C98D52618419000883C45 /* CommentsPresenter */,
+				3F7C98D62618419900883C45 /* CommentsView */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		3F7C98D52618419000883C45 /* CommentsPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				3F7C98DC261841FF00883C45 /* CommentsPresenter.swift */,
+			);
+			path = CommentsPresenter;
+			sourceTree = "<group>";
+		};
+		3F7C98D62618419900883C45 /* CommentsView */ = {
+			isa = PBXGroup;
+			children = (
+				3F7C98D7261841B500883C45 /* CommentsViewController.swift */,
+				3F7C98D8261841B500883C45 /* CommentsViewController.xib */,
+			);
+			path = CommentsView;
+			sourceTree = "<group>";
+		};
+		3F7C98DF261843A100883C45 /* BasePresenter */ = {
+			isa = PBXGroup;
+			children = (
+				3F7C98E0261843BB00883C45 /* BasePresenter.swift */,
+			);
+			path = BasePresenter;
+			sourceTree = "<group>";
+		};
+		3F7C98E42618468600883C45 /* BaseEntities */ = {
+			isa = PBXGroup;
+			children = (
+				3F8133692616F34400E8BDF6 /* BaseCoordinator */,
+				3F7C98DF261843A100883C45 /* BasePresenter */,
+			);
+			path = BaseEntities;
 			sourceTree = "<group>";
 		};
 		3F8133192616E0BB00E8BDF6 = {
@@ -164,6 +215,7 @@
 		3F8133582616E8ED00E8BDF6 /* Posts */ = {
 			isa = PBXGroup;
 			children = (
+				3F9250D1261753BA005011C8 /* Private */,
 				3F81335F2616E96C00E8BDF6 /* PostsPresenter */,
 				3F8133572616E87900E8BDF6 /* PostsView */,
 			);
@@ -181,8 +233,8 @@
 		3F8133682616F33D00E8BDF6 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				3F7C98E42618468600883C45 /* BaseEntities */,
 				3F9250CC261746D4005011C8 /* Extensions */,
-				3F8133692616F34400E8BDF6 /* BaseCoordinator */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -263,8 +315,8 @@
 		3F9250D0261753B3005011C8 /* CommentsFlow */ = {
 			isa = PBXGroup;
 			children = (
-				3F9250D1261753BA005011C8 /* Private */,
 				3F8133582616E8ED00E8BDF6 /* Posts */,
+				3F7C98D42618417700883C45 /* Comments */,
 			);
 			path = CommentsFlow;
 			sourceTree = "<group>";
@@ -354,6 +406,7 @@
 			files = (
 				3F81335C2616E90F00E8BDF6 /* PostsViewController.xib in Resources */,
 				3F8133322616E0BD00E8BDF6 /* LaunchScreen.storyboard in Resources */,
+				3F7C98DA261841B500883C45 /* CommentsViewController.xib in Resources */,
 				3F81332F2616E0BD00E8BDF6 /* Preview Assets.xcassets in Resources */,
 				3F81332C2616E0BD00E8BDF6 /* Assets.xcassets in Resources */,
 				3F9250D6261753DE005011C8 /* CommentsTableViewCell.xib in Resources */,
@@ -393,12 +446,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F9250A726170FB4005011C8 /* NetworkService.swift in Sources */,
+				3F7C98E1261843BB00883C45 /* BasePresenter.swift in Sources */,
 				3F9250C126174078005011C8 /* PostModel.swift in Sources */,
 				3F9250AB261717A8005011C8 /* Networking.swift in Sources */,
 				3F9250B626173059005011C8 /* UsersModel.swift in Sources */,
+				3F7C98DD261841FF00883C45 /* CommentsPresenter.swift in Sources */,
 				3F9250CE261746E5005011C8 /* UINavigationController+Extensions.swift in Sources */,
 				3F81335B2616E90F00E8BDF6 /* PostsViewController.swift in Sources */,
 				3F9250C42617413E005011C8 /* CommentsModel.swift in Sources */,
+				3F7C98D9261841B500883C45 /* CommentsViewController.swift in Sources */,
 				3F9250D5261753DE005011C8 /* CommentsTableViewCell.swift in Sources */,
 				3F9250A326170BF0005011C8 /* RequestService.swift in Sources */,
 				3F9250B92617364E005011C8 /* NetworkParser.swift in Sources */,
