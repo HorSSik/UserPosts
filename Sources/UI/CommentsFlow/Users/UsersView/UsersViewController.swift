@@ -77,7 +77,7 @@ extension UsersViewController: UITableViewDataSource {
 }
 
 // MARK: -
-// MARK: Description
+// MARK: UITableViewDelegate
 
 extension UsersViewController: UITableViewDelegate {
     

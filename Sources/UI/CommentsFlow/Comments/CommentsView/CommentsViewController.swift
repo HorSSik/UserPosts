@@ -77,7 +77,7 @@ extension CommentsViewController: UITableViewDataSource {
 }
 
 // MARK: -
-// MARK: Description
+// MARK: UITableViewDelegate
 
 extension CommentsViewController: UITableViewDelegate {
     

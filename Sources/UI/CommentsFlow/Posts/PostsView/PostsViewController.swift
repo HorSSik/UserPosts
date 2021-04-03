@@ -96,7 +96,7 @@ extension PostsViewController: UITableViewDataSource {
 }
 
 // MARK: -
-// MARK: Description
+// MARK: UITableViewDelegate
 
 extension PostsViewController: UITableViewDelegate {
     
